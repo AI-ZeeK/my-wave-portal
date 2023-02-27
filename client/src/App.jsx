@@ -23,6 +23,7 @@ const findMetaMaskAccount = async () => {
 
 		console.log("We have the Ethereum object", ethereum);
 		const accounts = await ethereum.request({ method: "eth_accounts" });
+		console.log(ethereum, accounts);
 
 		if (accounts.length !== 0) {
 			const account = accounts[0];
@@ -51,6 +52,7 @@ const App = () => {
 	/*
 	 * Create a method that gets all waves from your contract
 	 */
+
 	const getAllWaves = async () => {
 		try {
 			const { ethereum } = window;
@@ -79,6 +81,16 @@ const App = () => {
 						message: wave.message,
 					};
 				});
+				console.log(
+					waves,
+					wavesCleaned,
+					contractABI,
+					ethereum,
+					signer,
+					provider,
+					wavePortalContract
+				);
+
 				// waves.forEach((wave) => {
 				// 	wavesCleaned.push({
 				// 		address: wave.waver,
@@ -149,6 +161,15 @@ const App = () => {
 
 				count = await wavePortalContract.getTotalWaves();
 				console.log("Retrieved total wave count...", count.toNumber());
+				console.log(
+					waveTxn,
+					count,
+					contractABI,
+					ethereum,
+					signer,
+					provider,
+					wavePortalContract
+				);
 			} else {
 				console.log("Ethereum object doesn't exist!");
 			}
@@ -205,11 +226,39 @@ const App = () => {
 	return (
 		<div className="mainContainer">
 			<div className="dataContainer">
-				<div className="header">👋 Hey there!</div>
+				<div className="card-edge"></div>
+				<div className="card-edge2"></div>
+				<div className="circle-box"></div>
+				<div className="circle-box2"></div>
+				<div className="circle-box3"></div>
+				<div className="circle-box4"></div>
+				<div className="circle-box5"></div>
+				<div className="circle-box6"></div>
+				<div className="circle-box-3"></div>
+				<div className="circle-box-4"></div>
+				<div className="circle-box-5"></div>
+				<div className="circle-box-6"></div>
+				<div className="circle-box7"></div>
+				<div className="circle-box8"></div>
+				<div className="circle-box9"></div>
+				<div className="circle-box10"></div>
+				<div className="circle-box11"></div>
+				<div className="circle-box12"></div>
+				<div className="circle-box-9"></div>
+				<div className="circle-box-10"></div>
+				<div className="circle-box-11"></div>
+				<div className="circle-box-12"></div>
+				<div className="dot1"></div>
+				<div className="dot2"></div>
+				<div className="dot3"></div>
+				<div className="dot4"></div>
+				<div className="dot5"></div>
+				<div className="dot6"></div>
+				<h1 className="header">👋 Hey there!</h1>
 
 				<div className="bio">
-					I am farza and I worked on self-driving cars so that's pretty cool
-					right? Connect your Ethereum wallet and wave at me!
+					I am Isaac and I work on Web3 projects so that's pretty cool right?{" "}
+					<br /> Connect your Ethereum wallet and wave at me!
 				</div>
 
 				<button className="waveButton" onClick={wave}>
@@ -224,13 +273,13 @@ const App = () => {
 
 				{allWaves.map((wave, index) => {
 					return (
-						<div 
+						<div className='waves-array'
 							key={index}
 							style={{
 								backgroundColor: "OldLace",
 								marginTop: "16px",
-								padding: "8px",
-								color: "black"
+								padding: "12px",
+								color: "black",
 							}}>
 							<div>Address: {wave.address}</div>
 							<div>Time: {wave.timestamp.toString()}</div>
